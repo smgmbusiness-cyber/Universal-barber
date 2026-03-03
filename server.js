@@ -53,3 +53,29 @@ app.post('/api/booking/room', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server kjører på port ${PORT}`);
 });
+
+// START OUTBOUND CALL
+app.post("/api/call/outbound", async (req, res) => {
+  try {
+    const { to_number, agent_id, from_number } = req.body;
+
+    const response = await fetch("https://api.retellai.com/v2/create-phone-call", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RETELL_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        agent_id,
+        from_number,
+        to_number,
+      }),
+    });
+
+    const data = await response.json();
+    res.status(200).json(data);
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
