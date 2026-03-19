@@ -34,6 +34,7 @@ const twilioClient =
  * Ett innnummer per kunde.
  * Bytt ut numre og data med deres ekte kunder.
  */
+
 const CUSTOMERS = {
   "+372 5705 1857": {
     customerId: "customer_1",
