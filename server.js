@@ -220,7 +220,7 @@ app.get("/api/tools/booking-request/:callId", (req, res) => {
 // ========= WEBHOOK: CALL COMPLETED =========
 // Koble denne til Retell webhook for "call_ended" eller "call_analyzed".
 // Retell webhooks sendes som POST med JSON-payload. Etter avsluttet/analysert call
-// kan dere lese call-data og sende SMS. :contentReference[oaicite:1]{index=1}
+// kan dere lese call-data og sende SMS.
 //
 // Denne håndterer flere vanlige feltnavn defensivt.
 app.post("/api/webhooks/retell-call-completed", async (req, res) => {
@@ -257,7 +257,7 @@ app.post("/api/webhooks/retell-call-completed", async (req, res) => {
 
     // Hvis dere senere bruker post-call analysis til å extracte structured fields,
     // kan dere også oppdatere customerName/requestedService/requestedTime her.
-    // Retell har webhook-støtte for call analysis etter call er ferdig. :contentReference[oaicite:2]{index=2}
+    // Retell har webhook-støtte for call analysis etter call er ferdig.
 
     // Ikke send SMS hvis vi mangler minimumsinformasjon
     const hasUsefulData =
