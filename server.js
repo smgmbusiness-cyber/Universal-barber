@@ -80,7 +80,7 @@ function buildSalonSms(call) {
     call.notes ? `Notat: ${call.notes}.` : null,
   ];
 
-  return parts.filter(Boolean).join(" ");
+  return parts.filter(Boolean).join("\n");
 }
 
 async function sendSmsToSalon(body) {
